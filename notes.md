@@ -13,6 +13,11 @@
    - div
    - button
 
+### Styling
+- Flexbox
+- Grid layout
+- box shadow
+
 ### Things to Check
 - add :hover and :focus states to the button
 - dynamically populate content using local JSON data file 
