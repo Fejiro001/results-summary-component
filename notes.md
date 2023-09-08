@@ -14,9 +14,12 @@
    - button
 
 ### Styling
+- SCSS
 - Flexbox
 - Grid layout
 - box shadow
+- gradient
+- hover
 
 ### Things to Check
 - add :hover and :focus states to the button

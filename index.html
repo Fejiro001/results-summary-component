@@ -13,22 +13,24 @@
 </head>
 
 <body>
-  <div role="contentinfo" class="card">
-    <div role="region" class="result">
-      <h1 class="result__title">Your Result</h1>
-      <p class="result__score">76<br>of 100</p>
-      <h2 class="result__praise">Great</h2>
-      <p class="result__body">You scored higher than 65% of the people who have taken these tests.</p>
+  <main>
+    <div role="contentinfo" class="card">
+      <div role="region" class="result">
+        <h1 class="title">Your Result</h1>
+        <p class="result__score">76<br><span class="result__body">of 100</span></p>
+        <h2 class="result__praise">Great</h2>
+        <p class="result__body">You scored higher than 65% of the people who have taken these tests.</p>
+      </div>
+      <div role="region" class="summary">
+        <h1 class="title">Summary</h1>
+        <div role="status" class="summary__score summary__score--color_red">Reaction 80 / 100</div>
+        <div role="status" class="summary__score">Memory 92 / 100</div>
+        <div role="status" class="summary__score">Verbal 61 / 100</div>
+        <div role="status" class="summary__score">Visual 72 / 100</div>
+        <button class="summary__button">Continue</button>
+      </div>
     </div>
-    <div role="region" class="summary">
-      <h1 class="summary__title">Summary</h1>
-      <div role="status" class="summary__score summary__score--color_red">Reaction 80 / 100</div>
-      <div role="status" class="summary__score">Memory 92 / 100</div>
-      <div role="status" class="summary__score">Verbal 61 / 100</div>
-      <div role="status" class="summary__score">Visual 72 / 100</div>
-      <button class="summary__button">Continue</button>
-    </div>
-  </div>
+  </main>
 </body>
 
 </html>
