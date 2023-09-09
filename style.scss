@@ -4,6 +4,24 @@
     box-sizing: border-box;
 }
 
-body {
-    
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    // background-color: blue;
+}
+
+.result {
+    flex: 50%;
+}
+
+.summary{
+    flex: 50%;
 }
