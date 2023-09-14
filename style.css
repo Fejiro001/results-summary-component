@@ -54,7 +54,6 @@ main {
 
 .card {
   width: 22rem;
-  border: black 1px solid;
   background-color: hsl(0, 0%, 100%);
 }
 

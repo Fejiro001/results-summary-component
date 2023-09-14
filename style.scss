@@ -64,7 +64,6 @@ main {
 .card {
     @extend %flex-flow;
     width: 22rem;
-    border: black 1px solid;
     background-color: $neutral-hsl-100;
 }
 
@@ -183,9 +182,5 @@ main {
         display: flex;
         flex-direction: row;
         gap: $gap;
-    }
-
-    >* {
-        // border: 1px solid red;
     }
 }
