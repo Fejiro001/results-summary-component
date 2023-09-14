@@ -1,0 +1,44 @@
+// CSS reset
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    // removes all font weight and sizes
+    font: inherit;
+}
+
+* {
+    margin: 0;
+    font-family: "HankenGrotesk", sans-serif;
+}
+
+html {
+    // allows for using system color scheme
+    color-scheme: dark light;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+body {
+    font-family: 'HankenGrotesk', sans-serif;
+    line-height: 1.5;
+}
+
+// CSS RESET END

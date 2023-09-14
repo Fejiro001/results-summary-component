@@ -7,20 +7,11 @@
 
 * {
   margin: 0;
+  font-family: "HankenGrotesk", sans-serif;
 }
 
 html {
-  color-scheme: light;
-}
-
-/*
-Typographic tweaks!
-. Add accessible line-height
-. Improve text rendering
-*/
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  color-scheme: dark light;
 }
 
 img,
@@ -30,13 +21,6 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
 }
 
 p,
@@ -49,6 +33,22 @@ h6 {
   overflow-wrap: break-word;
 }
 
+body {
+  font-family: "HankenGrotesk", sans-serif;
+  line-height: 1.5;
+}
+
+@font-face {
+  font-family: "HankenGrotesk";
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("assets/fonts/HankenGrotesk-VariableFont_wght.ttf");
+}
+.result__score, .card {
+  display: flex;
+  flex-direction: column;
+}
+
 main {
   min-height: 100vh;
   display: flex;
@@ -57,14 +57,50 @@ main {
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 20rem;
 }
 
 .result {
   flex: 50%;
+  padding: 1.5rem;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  text-wrap: balance;
+  border-radius: 0 0 2rem 2rem;
+  background-image: linear-gradient(hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+}
+.result .title {
+  font-weight: 500;
+  font-size: 1rem;
+  color: hsl(241, 100%, 89%);
+}
+.result__score {
+  font-weight: 500;
+  font-size: 1rem;
+  color: hsl(241, 100%, 89%);
+  justify-content: center;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background-image: linear-gradient(hsl(256, 72%, 46%), hsla(241, 72%, 46%, 0));
+}
+.result__score span {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: hsl(0, 0%, 100%);
+}
+.result__great {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.result__body {
+  font-weight: 500;
+  font-size: 1rem;
+  color: hsl(241, 100%, 89%);
 }
 
 .summary {

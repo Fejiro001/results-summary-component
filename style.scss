@@ -1,60 +1,50 @@
-// CSS RESET
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-    // removes all font weight and sizes
-    font: inherit;
+@use 'reset';
+
+@font-face {
+    font-family: "HankenGrotesk";
+    font-display: swap;
+    font-weight: 100 900;
+    src: url("assets/fonts/HankenGrotesk-VariableFont_wght.ttf");
 }
 
-* {
-    margin: 0;
+$primary-hsl-400: hsl(252, 100%, 67%);
+$secondary-hsl-400: hsl(241, 81%, 54%);
+$primary-hsl-500: hsla(256, 72%, 46%, 1);
+$secondary-hsl-500: hsla(241, 72%, 46%, 0);
+
+$gradient-primary: linear-gradient($primary-hsl-400, $secondary-hsl-400);
+$gradient-secondary: linear-gradient($primary-hsl-500, $secondary-hsl-500);
+
+$neutral-hsl-100: hsl(0, 0%, 100%);
+$neutral-hsl-200: hsl(221, 100%, 96%);
+$neutral-hsl-300: hsl(241, 100%, 89%);
+$neutral-hsl-700: hsl(224, 30%, 27%);
+
+$red: hsl(0, 100%, 67%);
+$yellow: hsl(39, 100%, 56%);
+$green: hsl(166, 100%, 37%);
+$blue: hsl(234, 85%, 45%);
+
+$main-font: "HankenGrotesk", sans-serif;
+$fw-regular: 500;
+$fw-bold: 700;
+$fw-black: 800;
+
+$fs-small: 1rem; //16px
+$fs-medium: 1.25rem; //20px
+$fs-large: 3.5rem; //56px
+
+
+@mixin font-small() {
+    font-weight: $fw-regular;
+    font-size: $fs-small;
+    color: $neutral-hsl-300;
 }
 
-html {
-    // allows for using system color scheme
-    color-scheme: light;
+%flex-flow {
+    display: flex;
+    flex-direction: column;
 }
-
-/*
-Typographic tweaks!
-. Add accessible line-height
-. Improve text rendering
-*/
-body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-}
-
-// Improve media defaults
-img,
-picture,
-video,
-canvas,
-svg {
-    display: block;
-    max-width: 100%;
-}
-
-// Remove built-in form typography styles
-input,
-button,
-textarea,
-select {
-    font: inherit;
-}
-
-// Avoid text overflows
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    overflow-wrap: break-word;
-}
-// CSS RESET END
 
 main {
     min-height: 100vh;
@@ -64,13 +54,54 @@ main {
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
+    @extend %flex-flow;
+    width: 20rem;
+    // background-color: $neutral-hsl-100;
 }
 
 .result {
+    // @include region();
     flex: 50%;
+    padding: 1.5rem;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    text-wrap: balance;
+    border-radius: 0 0 2rem 2rem;
+    background-image: $gradient-primary;
+
+    .title {
+        @include font-small();
+    }
+
+    &__score {
+        @extend %flex-flow;
+        @include font-small();
+        justify-content: center;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        background-image: $gradient-secondary;
+
+        span {
+            display: block;
+            font-size: $fs-large;
+            font-weight: $fw-black;
+            color: $neutral-hsl-100;
+        }
+    }
+
+    &__great {
+        font-size: $fs-medium;
+        font-weight: $fw-regular;
+    }
+
+    &__body {
+        @include font-small();
+    }
+
 }
 
 .summary {
