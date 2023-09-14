@@ -25,6 +25,11 @@ $yellow: hsl(39, 100%, 56%);
 $green: hsl(166, 100%, 37%);
 $blue: hsl(234, 85%, 45%);
 
+$red-tr: hsla(0, 100%, 67%, .1);
+$yellow-tr: hsla(39, 100%, 56%, .1);
+$green-tr: hsla(166, 100%, 37%, .1);
+$blue-tr: hsla(234, 85%, 45%, .1);
+
 $main-font: "HankenGrotesk", sans-serif;
 $fw-regular: 500;
 $fw-bold: 700;
@@ -34,12 +39,15 @@ $fs-small: 1rem; //16px
 $fs-medium: 1.25rem; //20px
 $fs-large: 3.5rem; //56px
 
+$gap: 1rem;
 
-@mixin font-small() {
-    font-weight: $fw-regular;
+@mixin font-small($color: color, $weight: weight) {
+    font-weight: $weight;
     font-size: $fs-small;
-    color: $neutral-hsl-300;
+    color: $color;
 }
+
+
 
 %flex-flow {
     display: flex;
@@ -55,55 +63,129 @@ main {
 
 .card {
     @extend %flex-flow;
-    width: 20rem;
-    // background-color: $neutral-hsl-100;
+    width: 22rem;
+    border: black 1px solid;
+    background-color: $neutral-hsl-100;
 }
 
 .result {
     // @include region();
     flex: 50%;
-    padding: 1.5rem;
+    padding: 2rem;
     display: grid;
     justify-items: center;
     align-items: center;
     text-align: center;
-    gap: 1rem;
+    gap: $gap;
     text-wrap: balance;
     border-radius: 0 0 2rem 2rem;
     background-image: $gradient-primary;
 
     .title {
-        @include font-small();
+        @include font-small($neutral-hsl-300, $fw-bold);
     }
 
     &__score {
         @extend %flex-flow;
-        @include font-small();
+        @include font-small($neutral-hsl-300, $fw-bold);
         justify-content: center;
-        width: 8rem;
-        height: 8rem;
+        width: 9rem;
+        height: 9rem;
         border-radius: 50%;
         background-image: $gradient-secondary;
 
         span {
             display: block;
-            font-size: $fs-large;
-            font-weight: $fw-black;
+            font: {
+                size: $fs-large;
+                weight: $fw-black;
+            }
             color: $neutral-hsl-100;
         }
     }
 
+    .flex-flow {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+
     &__great {
-        font-size: $fs-medium;
-        font-weight: $fw-regular;
+        font: {
+            size: $fs-medium;
+            weight: $fw-regular;
+        }
+        color: $neutral-hsl-200;
     }
 
     &__body {
-        @include font-small();
+        @include font-small($neutral-hsl-300, $fw-regular);
     }
 
 }
 
 .summary {
     flex: 50%;
+    display: grid;
+    gap: $gap;
+    padding: 1.5rem;
+
+    .title {
+        @include font-small($neutral-hsl-700, $fw-bold);
+    }
+
+    .grid-flow {
+        display: grid;
+        gap: $gap;
+
+        [data-color= red] {
+            background-color: $red-tr;
+        }
+
+        [data-color= yellow] {
+            background-color: $yellow-tr;
+        }
+
+        [data-color= green] {
+            background-color: $green-tr;
+        }
+        
+        [data-color= blue] {
+            background-color: $blue-tr;
+        }
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        padding: $gap;
+        border-radius: .5rem;
+
+        &__icon {
+            stroke-width: 1.8;
+        }
+
+        &__title--color-red {
+            @include font-small($red, $fw-bold);
+        }
+        &__title--color-yellow {
+            @include font-small($yellow, $fw-bold);
+        }
+        &__title--color-green {
+            @include font-small($green, $fw-bold);
+        }
+        &__title--color-blue {
+            @include font-small($blue, $fw-bold);
+        }
+    }
+
+    .flex-group {
+        display: flex;
+        flex-direction: row;
+        gap: $gap;
+    }
+
+    >* {
+        // border: 1px solid red;
+    }
 }
