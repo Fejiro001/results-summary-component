@@ -19,6 +19,7 @@ $neutral-hsl-100: hsl(0, 0%, 100%);
 $neutral-hsl-200: hsl(221, 100%, 96%);
 $neutral-hsl-300: hsl(241, 100%, 89%);
 $neutral-hsl-700: hsl(224, 30%, 27%);
+$neutral-hsl-800: hsla(224, 30%, 27%, 0.596);
 
 $red: hsl(0, 100%, 67%);
 $yellow: hsl(39, 100%, 56%);
@@ -40,45 +41,68 @@ $fs-medium: 1.25rem; //20px
 $fs-large: 3.5rem; //56px
 
 $gap: 1rem;
+$min-width: 45rem;
+$radius: 2rem;
 
 @mixin font-small($color: color, $weight: weight) {
     font-weight: $weight;
     font-size: $fs-small;
     color: $color;
+
+    @media (min-width: $min-width) {
+        font-size: calc($fs-small + .15rem);
+    }
 }
-
-
 
 %flex-flow {
     display: flex;
     flex-direction: column;
 }
 
+%region {
+    flex: 50%;
+    display: grid;
+    gap: $gap;
+}
+
 main {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+
+    @media (min-width: $min-width) {
+        align-items: center;
+    }
 }
 
 .card {
     @extend %flex-flow;
     width: 22rem;
     background-color: $neutral-hsl-100;
+    border-radius: $radius;
+
+    @media (min-width: $min-width) {
+        flex-direction: row;
+        width: 45rem;
+        margin: $radius;
+        box-shadow: 5px 5px 10px 8px $neutral-hsl-200;
+    }
 }
 
 .result {
-    // @include region();
-    flex: 50%;
-    padding: 2rem;
-    display: grid;
+    @extend %region;
+    padding: 2rem 3rem;
     justify-items: center;
-    align-items: center;
+    align-items: self-start;
     text-align: center;
-    gap: $gap;
-    text-wrap: balance;
-    border-radius: 0 0 2rem 2rem;
+    text-wrap: wrap;
+    border-radius: 0 0 $radius $radius;
     background-image: $gradient-primary;
+    
+    @media (min-width: $min-width) {
+        border-radius: $radius;
+    }
 
     .title {
         @include font-small($neutral-hsl-300, $fw-bold);
@@ -95,10 +119,12 @@ main {
 
         span {
             display: block;
+
             font: {
                 size: $fs-large;
                 weight: $fw-black;
             }
+
             color: $neutral-hsl-100;
         }
     }
@@ -115,6 +141,10 @@ main {
             weight: $fw-regular;
         }
         color: $neutral-hsl-200;
+
+        @media (min-width: $min-width) {
+            font-size: calc($fs-medium + .25rem);
+        }
     }
 
     &__body {
@@ -124,10 +154,8 @@ main {
 }
 
 .summary {
-    flex: 50%;
-    display: grid;
-    gap: $gap;
-    padding: 1.5rem;
+    @extend %region;
+    padding: 2rem 2rem;
 
     .title {
         @include font-small($neutral-hsl-700, $fw-bold);
@@ -137,19 +165,19 @@ main {
         display: grid;
         gap: $gap;
 
-        [data-color= red] {
+        [data-color=red] {
             background-color: $red-tr;
         }
 
-        [data-color= yellow] {
+        [data-color=yellow] {
             background-color: $yellow-tr;
         }
 
-        [data-color= green] {
+        [data-color=green] {
             background-color: $green-tr;
         }
-        
-        [data-color= blue] {
+
+        [data-color=blue] {
             background-color: $blue-tr;
         }
     }
@@ -167,14 +195,26 @@ main {
         &__title--color-red {
             @include font-small($red, $fw-bold);
         }
+
         &__title--color-yellow {
             @include font-small($yellow, $fw-bold);
         }
+
         &__title--color-green {
             @include font-small($green, $fw-bold);
         }
+
         &__title--color-blue {
             @include font-small($blue, $fw-bold);
+        }
+
+
+        &__score {
+            @include font-small($neutral-hsl-800, $fw-black);
+
+            span {
+                @include font-small($neutral-hsl-700, $fw-black);
+            }
         }
     }
 
@@ -182,5 +222,18 @@ main {
         display: flex;
         flex-direction: row;
         gap: $gap;
+    }
+
+    .button {
+        @include font-small($neutral-hsl-100, $fw-bold);
+        background-color: $neutral-hsl-700;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 20rem;
+
+        &:hover, &:focus {
+            background-image: $gradient-primary;
+            cursor: pointer;
+        }
     }
 }
