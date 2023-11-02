@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [](https://github.com/Fejiro001/results-summary-component)
-- Live Site URL: [](https://fejiro001.github.io/results-summary-component/)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/responsive-card-using-sass-css-grid-and-flexbox-lp-AP15k3J)
+- Live Site URL: [Live Site](https://fejiro001.github.io/results-summary-component/)
 
 ## My process
 
